@@ -1,0 +1,38 @@
+{
+  "name": "simple-archiver",
+  "version": "0.1.0",
+  "dependencies": {
+    "archiver": "^0.21.0",
+    "co": "^4.6.0",
+    "tar": "^2.2.1",
+    "unzip2": "^0.2.5"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha $(find test -name '*.spec.js')"
+  },
+  "main": "index.js",
+  "repository": "kesarion/simple-archiver",
+  "description": "Simple archiver for zip and tar formats that can handle multiple entries of files, directories, buffers, streams and strings",
+  "homepage": "https://github.com/kesarion/simple-archiver",
+  "icon": "",
+  "keywords": [
+    "zip",
+    "tar",
+    "file",
+    "directory",
+    "buffer",
+    "stream",
+    "string",
+    "archive",
+    "extract"
+  ],
+  "author": {
+    "name": "Alexandru Sfirlogea",
+    "email": "alexandru.sfirlogea@gmail.com"
+  },
+  "license": "UNLICENSED"
+}
