@@ -36,7 +36,6 @@ describe('Archiver', function () { // this.timeout(10000); // only without arrow
       for (let input of inputs) {
         it(`should extract a ${format.type} archive from a ${input.type}`, () => co(function *() {
           yield extract(yield input.value(format.type), DESTINATION, { format: format.value });
-          console.log(yield execute('diff', ['-r', SOURCE, DESTINATION]));
           expect(yield same(SOURCE, DESTINATION)).to.be.true;
         }));
       }
