@@ -13,7 +13,7 @@ npm install simple-archiver --save
 
 ## Usage
 
-### - Archive -
+### Archive
 
 ```js
 var archive = require('simple-archiver').archive;
@@ -40,7 +40,7 @@ archive([
 ```
 For optimal performance, you would use objects specifying the type and name of each entry. While not optimal, the type can be determined automatically, but the name can only be determined for paths (files and directories).
 
-### - Extract -
+### Extract
 
 ```js
 var extract = require('simple-archiver').extract;
@@ -104,7 +104,7 @@ Note: Extract doesn't know the format of your archive, so if it's not 'zip', rem
 ### [archiver](https://github.com/archiverjs/node-archiver)
 Used by archive() and provided for you if you need access to advanced options.
 
-### [unzip2](hhttps://github.com/glebdmitriew/node-unzip-2) & [tar](https://github.com/npm/node-tar)
+### [unzip2](https://github.com/glebdmitriew/node-unzip-2) & [tar](https://github.com/npm/node-tar)
 Used by extract() and provided as unzip and tar from the module.
 
 ## Issues & Features

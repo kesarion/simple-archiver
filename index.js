@@ -145,4 +145,4 @@ module.exports = {
   archiver: archiver,
   unzip: unzip,
   tar: tar
-}
+};

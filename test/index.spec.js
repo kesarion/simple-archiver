@@ -1,7 +1,7 @@
 "use strict";
 
 // Node.js
-var fs = require('fs')
+var fs = require('fs');
 var spawn = require('child_process').spawn;
 
 // npm
@@ -35,6 +35,7 @@ describe('Archiver', function () { // this.timeout(10000); // only without arrow
     for (let format of formats) {
       for (let input of inputs) {
         it(`should extract a ${format.type} archive from a ${input.type}`, () => co(function *() {
+          console.log(yield execute('diff', ['-r', source, destination]));
           yield extract(yield input.value(format.type), DESTINATION, { format: format.value });
           expect(yield same(SOURCE, DESTINATION)).to.be.true;
         }));
@@ -66,7 +67,7 @@ describe('Archiver', function () { // this.timeout(10000); // only without arrow
         { data: fs.createReadStream(`${SOURCE}/file1.txt`), type: 'stream', name: 'file1.txt' },
         { data: yield promisify(fs.readFile, [`${SOURCE}/file2`]), type: 'buffer', name: 'file2' },
         { data: yield promisify(fs.readFile, [`${SOURCE}/file3.txt`, 'utf8']), type: 'string', name: 'file3.txt' }
-      ]; }) },
+      ]; }) }
     ];
 
     for (let format of formats) {
