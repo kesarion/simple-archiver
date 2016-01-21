@@ -108,9 +108,9 @@ Used by archive() and provided for you if you need access to advanced options.
 Used by extract() and provided as unzip and tar from the module.
 
 ## Issues & Features
-If you've got an issue, it's probably related to the above npm packages used in this project. Do your research before create a new issue.
+If you've got an issue, it's probably related to the above npm packages used in this project. Do your research before you create a new issue.
 
-If you want to propose a new feature, check if it's possible through the above mentioned packages first; if yes, then create a new issue for it; if no, then go to the relevant package and create a new issue for it there.
+If you want to propose a new feature, check if it's possible through the above mentioned packages first. If yes, then create a new issue for it, if no, then go to the relevant package and create a new issue for it there.
 
 ## Thanks
 A big thank you to the above package creators and collaborators for making this possible.
