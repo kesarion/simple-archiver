@@ -18,19 +18,17 @@ npm install simple-archiver --save
 ```js
 var archive = require('simple-archiver').archive;
 
-// Can take any value of one of the types mentioned above, but only path strings will keep their names
 archive(path)
   .then(archiveBuffer => console.log('Done! We should do something with the buffer.'))
   .catch(console.log);
 
-// You can create an archive composed of multiple files and directories
-archive(['/path/file.txt', '/path/auto-detect-dir-or-file-type', '/and-so-on']);
+archive(['/path/file.txt', '/path/auto-detect-dir-or-file-type', '/and-so-on']); // .then(...).catch(...);
 
 // You can include Buffers, Streams and Strings in the archive as well (giving them a name)
 archive([
- { data: '/path/file', type: 'file',      name: 'optional-name'  },
- { data: '/path/dir',  type: 'directory', name: 'my-dir'  },
- { data: buffer,       type: 'buffer',    name: 'should-have-a-name' },
+ { data: '/path/file', type: 'file',      name: 'new-file-name'  },
+ { data: '/path/dir',  type: 'directory', name: 'new-dir-name'  },
+ { data: buffer,       type: 'buffer',    name: 'file1' },
  { data: stream,       type: 'stream',    name: 'file2' },
  { data: 'string',     type: 'string',    name: 'file3' }
 ], {
@@ -73,7 +71,7 @@ Object properties:
 Object properties:
 
 - `format` - (optional) Archive format: 'zip' (default), 'tar';
-- `output` - (optional) Output type: 'buffer' (default), 'stream', '/path'; If you enter a path string, the archive will be saved there and resolve value will be the path string;
+- `output` - (optional) Output type: 'buffer' (default), 'stream', '/path'; If you enter a path string, the archive will be saved there and the resolve value will be the path string;
 
 ### extract (archive, destination, options)
 => Promise
@@ -108,9 +106,9 @@ Used by archive() and provided for you if you need access to advanced options.
 Used by extract() and provided as unzip and tar from the module.
 
 ## Issues & Features
-If you've got an issue, it's probably related to the above npm packages used in this project. Do your research before create a new issue.
+If you have an issue, it's probably related to the above npm packages used in this project. Do your research before you create a new issue.
 
-If you want to propose a new feature, check if it's possible through the above mentioned packages first; if yes, then create a new issue for it; if no, then go to the relevant package and create a new issue for it there.
+If you want to propose a new feature, check if it's possible through the above mentioned packages first. If yes, then create a new issue for it, if no, then go to the relevant package and create a new issue for it there.
 
 ## Thanks
 A big thank you to the above package creators and collaborators for making this possible.
