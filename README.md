@@ -33,7 +33,7 @@ archive([
  { data: 'string',     type: 'string',    name: 'file3' }
 ], {
      format: 'tar',
-     output: '/path'
+     output: '/path/archive.tar'
 }); // we're making it a 'tar' archive and saving it to a path
 ```
 For optimal performance, you would use objects specifying the type and name of each entry. While not optimal, the type can be determined automatically, but the name can only be determined for paths (files and directories).
