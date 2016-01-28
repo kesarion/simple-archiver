@@ -71,7 +71,7 @@ var tar      = require('tar');
 
         let type = entry.type || 'other';
         if (!entry.type && util.isString(entry.data)) {
-          try { type = fs.statSync(entry.data).isDirectory() ? 'directory' : 'file'; } catch (e) {} // error if not file or dir; ignore it
+          try { type = fs.statSync(entry.data).isDirectory() ? 'directory' : 'file'; } catch (e) {} // error if not a path, silently ignored and type stays the same
         }
 
         switch (type) {

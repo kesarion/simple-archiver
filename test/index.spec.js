@@ -72,7 +72,7 @@ describe('Archiver', function () { // this.timeout(10000); // only without arrow
     for (let format of formats) {
       for (let input of inputs) {
         for (let output of outputs) {
-          it(`should archive using '${format.type}' from '${input.type}' and output a '${output.type}'`, () => co(function *() {
+          it(`should archive using '${format.type}' from '${input.type}' and output '${output.type}'`, () => co(function *() {
             let archiveData = yield archive(yield input.value(), { format: format.value, output: output.value });
             yield extract(archiveData, DESTINATION, { format: format.value });
             expect(yield same(`${SOURCE}/${input.source}`, `${DESTINATION}/${input.dest}`)).to.be.true;
