@@ -1,17 +1,17 @@
 "use strict";
 
 // Node.js
-var fs = require('fs');
-var spawn = require('child_process').spawn;
+const fs = require('fs');
+const spawn = require('child_process').spawn;
 
 // npm
-var expect = require('chai').expect;
-var co = require('co');
+const expect = require('chai').expect;
+const co = require('co');
 
 // Project
-var archiver = require('..');
-var archive = archiver.archive;
-var extract = archiver.extract;
+const archiver = require('..');
+const archive = archiver.archive;
+const extract = archiver.extract;
 
 const SOURCE = __dirname + '/resources/source';
 const DESTINATION = __dirname + '/resources/destination';

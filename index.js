@@ -1,14 +1,14 @@
 "use strict";
 
-var fs       = require('fs');
-var util     = require('util');
-var path     = require('path');
-var stream   = require('stream');
+const fs = require('fs');
+const util = require('util');
+const path = require('path');
+const stream = require('stream');
 
-var archiver = require('archiver');
-var unzip    = require('unzip2');
-var tar      = require('tar');
-var co       = require('co');
+const archiver = require('archiver');
+const unzip = require('unzip2');
+const tar = require('tar');
+const co = require('co');
 
 
 /**
