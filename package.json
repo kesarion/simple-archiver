@@ -2,17 +2,21 @@
   "name": "simple-archiver",
   "version": "0.2.0",
   "dependencies": {
-    "archiver": "^1.2.0",
-    "co": "^4.6.0",
-    "tar": "^2.2.1",
-    "unzip2": "^0.2.5"
+    "archiver": "^3.1.1",
+    "tar": "^5.0.5",
+    "unzipper": "github:kesarion/node-unzipper"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^3.1.2"
+    "chai": "^4.2.0",
+    "dir-compare": "^2.0.1",
+    "mocha": "^7.0.1",
+    "shelljs": "^0.8.3"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha $(find test -name '*.spec.js')"
+    "test": "mocha test/index.spec.js"
+  },
+  "mocha": {
+    "bail": true
   },
   "main": "index.js",
   "repository": "kesarion/simple-archiver",
