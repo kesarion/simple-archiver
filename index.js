@@ -6,9 +6,8 @@ const path = require('path');
 const stream = require('stream');
 
 const archiver = require('archiver');
-const unzip = require('unzip2');
+const unzip = require('unzipper');
 const tar = require('tar');
-const co = require('co');
 
 
 /**
@@ -52,7 +51,7 @@ const co = require('co');
  */
 function archive (entries, options)
 {
-    return new Promise((resolve, reject) => co( function *() {
+    return new Promise(async function (resolve, reject) {
         if (!entries) return resolve(null);
         if (!util.isArray(entries)) entries = [entries];
         if (!options) options = {};
@@ -64,12 +63,13 @@ function archive (entries, options)
         // If buffer (default) output
         if (!options.output || options.output === 'buffer') {
             archive.on('data', part => data.push(part));
+
             archive.on('end', () => {
                 resolve(Buffer.concat(data));
             });
         }
 
-        let counter = 100; // counter, in case of 'other' without a name
+        let counter = 0; // counter, in case of 'other' without a name
         for (let entry of entries) {
             if (!entry.data) {
                 entry = { data: entry };
@@ -77,7 +77,7 @@ function archive (entries, options)
 
             let type = entry.type || 'other';
             if (!entry.type && util.isString(entry.data)) {
-                type = yield new Promise(resolve => fs.stat(entry.data, (err, stats) => resolve(err ? type : (stats.isDirectory() ? 'directory' : 'file'))));
+                type = await new Promise(resolve => fs.stat(entry.data, (err, stats) => resolve(err ? type : (stats.isDirectory() ? 'directory' : 'file'))));
             }
 
             switch (type) {
@@ -88,7 +88,7 @@ function archive (entries, options)
                     archive.directory(entry.data, entry.name || path.basename(entry.data));
                     break;
                 default:
-                    archive.append(entry.data, { name: entry.name || `${++counter}` });
+                    archive.append(entry.data, { name: entry.name || `${counter++}` });
             }
         }
 
@@ -101,7 +101,7 @@ function archive (entries, options)
         }
 
         archive.finalize();
-    }));
+    });
 }
 
 /**
@@ -132,7 +132,7 @@ function extract (archive, destination, options)
         let extract;
         switch (options.format) {
             case 'tar':
-                extract = tar.Extract({ path: destination });
+                extract = tar.x({ cwd: destination });
                 break;
             default:
                 extract = unzip.Extract({ path: destination });
