@@ -9,7 +9,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "dir-compare": "^2.0.1",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "shelljs": "^0.8.3"
   },
   "scripts": {
